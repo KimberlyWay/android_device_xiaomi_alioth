@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- PLACEHOLDER: the .invalid TLD never resolves (RFC 2606), so the Updater finds nothing and never
+         contacts the official PixelOS server. Replace with the real https URLs when hosting exists.
+         {branch} = net.pixelos.version (seventeen), {device} = ro.custom.device (alioth).
+         The feed request does NOT follow redirects and is capped at 1 MiB (raw.githubusercontent.com works). -->
+    <string name="updater_server_url" translatable="false">https://updates.invalid/{branch}/API/updater/{device}.json</string>
+    <string name="changelog_url" translatable="false">https://updates.invalid/{branch}/API/updater/changelogs/{device}.md</string>
+    <string name="certified_prop_url" translatable="false">https://updates.invalid/{branch}/API/updater/CertifiedProps/certified_build_props.apk</string>
+</resources>
