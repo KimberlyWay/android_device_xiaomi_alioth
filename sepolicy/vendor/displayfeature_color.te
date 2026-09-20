@@ -1,0 +1,4 @@
+# DisplayFeature HAL asks vendor.display.color::IDisplayColor (and then IDisplayPostproc)
+# when a mode with the QC DPPS effect (e.g. "Original") is selected. Without this rule the
+# lookup is denied and SET_QC_DPPS_MODE fails on every selection.
+allow vendor_hal_displayfeature_xiaomi_default vendor_hal_display_color_hwservice:hwservice_manager find;

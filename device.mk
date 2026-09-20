@@ -43,6 +43,10 @@ $(call soong_config_set,xiaomi_kona,variant_lib,//$(LOCAL_PATH):libvariant_xiaom
 # Miui Camera
 include device/xiaomi/camera/miuicamera.mk
 
+# Miui Camera: hand the client package name to the HAL through the session tag
+# com.xiaomi.sessionparams.clientName (used by frameworks/av Camera3Device)
+$(call soong_config_set,camera,package_name,com.android.camera)
+
 # Miui Camera STLicense
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/camera/st_license.lic:$(TARGET_COPY_OUT_VENDOR)/etc/camera/st_license.lic
