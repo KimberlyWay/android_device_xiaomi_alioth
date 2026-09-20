@@ -46,7 +46,11 @@ PRODUCT_PACKAGES += \
     FrameworkResOverlayDevice \
     SettingsOverlayDevice \
     CustomSystemUIOverlayDevice \
-    SystemUIOverlayDevice
+    SystemUIOverlayDevice \
+    CertifiedPropsOverlay
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/certifiedprops_overlay_config.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/overlay/config/config.xml
 
 # Shipping API level
 PRODUCT_SHIPPING_API_LEVEL := 30
