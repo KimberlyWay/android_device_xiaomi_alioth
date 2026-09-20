@@ -61,3 +61,16 @@ PRODUCT_SOONG_NAMESPACES += \
 
 # Inherit from vendor blobs
 $(call inherit-product, vendor/xiaomi/alioth/alioth-vendor.mk)
+# --- Own Updater (NOT official). Add to device/xiaomi/alioth/device.mk ---
+PRODUCT_PACKAGES += \
+    Updater \
+    UpdaterOverlayCustom
+
+# STUB: URLs in UpdaterOverlayCustom point to updates.invalid (nothing is found) until real hosting exists
+# same privapp allowlist file that vendor/custom/config/ota.mk installs for IS_OFFICIAL builds
+PRODUCT_COPY_FILES += \
+    vendor/custom/config/permissions/privapp-permissions-custom.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-permissions-custom.xml
+
+# Updater refuses to run with an empty net.pixelos.build_type; the JSON "type" field is ignored by the app
+PRODUCT_PRODUCT_PROPERTIES += \
+    net.pixelos.build_type=custom
