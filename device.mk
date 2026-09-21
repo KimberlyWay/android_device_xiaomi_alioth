@@ -47,6 +47,10 @@ include device/xiaomi/camera/miuicamera.mk
 # com.xiaomi.sessionparams.clientName (used by frameworks/av Camera3Device)
 $(call soong_config_set,camera,package_name,com.android.camera)
 
+# Miui Camera: let the HIDL device impl take the real stream format from the gralloc reserved
+# region (johnmart19 sm8250-common BoardConfigCommon: camera override_format_from_reserved)
+$(call soong_config_set_bool,camera,override_format_from_reserved,true)
+
 # Miui Camera STLicense
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/camera/st_license.lic:$(TARGET_COPY_OUT_VENDOR)/etc/camera/st_license.lic
