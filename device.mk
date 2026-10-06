@@ -23,9 +23,6 @@ TARGET_SCREEN_HEIGHT := 2400
 TARGET_SCREEN_WIDTH := 1080
 
 # Camera
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/camera/camera_cnf.txt:$(TARGET_COPY_OUT_VENDOR)/etc/camera/camera_cnf.txt
-
 PRODUCT_PACKAGES += \
     libpiex_shim
 
@@ -46,18 +43,19 @@ include device/xiaomi/camera/miuicamera.mk
 # Miui Camera: hand the client package name to the HAL through the session tag
 # com.xiaomi.sessionparams.clientName (used by frameworks/av Camera3Device)
 $(call soong_config_set,camera,package_name,com.android.camera)
+# MiuiCamera: explicitly enable the Xiaomi session client-name fallback
+$(call soong_config_set_bool,camera,xiaomi_session_client_name,true)
 
 # Miui Camera: let the HIDL device impl take the real stream format from the gralloc reserved
 # region (johnmart19 sm8250-common BoardConfigCommon: camera override_format_from_reserved)
 $(call soong_config_set_bool,camera,override_format_from_reserved,true)
 
 # Miui Camera STLicense
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/camera/st_license.lic:$(TARGET_COPY_OUT_VENDOR)/etc/camera/st_license.lic
+PRODUCT_PACKAGES += \
+    alioth_camera_st_license
 
 # Overlays
 PRODUCT_PACKAGES += \
-    ApertureOverlayDevice \
     FrameworkResOverlayDevice \
     SettingsOverlayDevice \
     CustomSystemUIOverlayDevice \
