@@ -491,6 +491,4 @@
 
     <!-- Specifies the maximum burn-in offset vertically. -->
     <integer name="config_burnInProtectionMaxVerticalOffset">40</integer>
-    <!-- Required by the shipped Xiaomi camera provider and MiuiCamera (matches the frameworks/base opt-in from johnmart19). -->
-    <bool name="config_cameraXiaomiVendorInputConfigurations">true</bool>
 </resources>
